@@ -1,9 +1,9 @@
-const Usuario = require('../models/usuarioModel');
+const Usuario = require('../models/Usuario');
 
 module.exports = {
     async store(req,res){
         const {name,email,password,birthday_date} = req.body;
-        const usuario = await Usuario.create({name,email,password,birthday_date});
-        res.json(usuario);
+        const {id} = await Usuario.create({name,email,password,birthday_date});
+        return res.json(`Id is ${id}`);
     }
 }
