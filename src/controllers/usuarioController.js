@@ -9,8 +9,7 @@ module.exports = {
         if(usuario)
             return res.json('Esse email já está cadastrado!');
 
-        const salt = bcrypt.genSaltSync(10);
-        const passwordFinal = bcrypt.hashSync(password, salt)
+        const passwordFinal = await bcrypt.hash(password, 10);
         const {id} = await Usuario.create({name,email,password:passwordFinal,birthday_date});
         return res.json(`Id is ${id}`);
     }
