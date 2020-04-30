@@ -14,9 +14,9 @@ module.exports = {
         return res.json(`Id is ${id}`);
     },
     async show(req,res){
-        const {id} = req.query;
+        const {userId} = req;
 
-        const usuario = await Usuario.findOne({where:{id}});
+        const usuario = await Usuario.findOne({where:{id:userId}});
 
         return res.json(usuario)
     }

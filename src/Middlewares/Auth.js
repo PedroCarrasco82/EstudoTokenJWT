@@ -13,7 +13,6 @@ module.exports = (req,res,next) => {
         res.status(401).json({messasge: 'Erro no token'});
 
     const [scheme, token] = splitedToken;
-    console.log(scheme);
 
     if(scheme !== 'Bearer')
         return res.status(401).json({message: 'Token com formato inválido'});
