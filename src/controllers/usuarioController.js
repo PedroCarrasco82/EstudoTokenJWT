@@ -12,5 +12,12 @@ module.exports = {
         const passwordFinal = await bcrypt.hash(password, 10);
         const {id} = await Usuario.create({name,email,password:passwordFinal,birthday_date});
         return res.json(`Id is ${id}`);
+    },
+    async show(req,res){
+        const {id} = req.query;
+
+        const usuario = await Usuario.findOne({where:{id}});
+
+        return res.json(usuario)
     }
 }
